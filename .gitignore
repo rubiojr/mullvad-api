@@ -1,0 +1,4 @@
+/mullvad-api
+/.dart_tool/
+/.pubspec.lock
+/build

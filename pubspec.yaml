@@ -1,0 +1,11 @@
+name: mullvad_api
+
+dependencies:
+  args: ^2.4.2
+  http: ^1.1.0
+
+environment:
+  sdk: '^3.1.0'
+
+executables:
+  mullvad: main
