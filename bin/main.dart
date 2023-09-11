@@ -9,7 +9,6 @@ Future<void> main(List<String> arguments) async {
     ..addCommand(new CountryCommand())
     ..addCommand(new CityCommand())
     ..addCommand(new IPCommand())
-    ..addCommand(new AllCommand())
     ..addCommand(new StatusCommand());
   runner.run(arguments);
 }
@@ -60,8 +59,11 @@ class StatusCommand extends Command {
   final description = "Return VPN status";
 
   void run() {
-    mullvad.connected().then((value) {
-      print(value);
+    mullvad.status().then((value) {
+      print("Connected:  ${value.connected}");
+      print("IP:         ${value.ip}");
+      print("City:       ${value.city}");
+      print("Country:    ${value.country}");
     });
   }
 }
@@ -75,22 +77,6 @@ class ConnectedCommand extends Command {
   void run() {
     mullvad.connected().then((value) {
       print(value);
-    });
-  }
-}
-
-class AllCommand extends Command {
-  final name = "all";
-  final description = "Return All VPN status information";
-
-  AllCommand();
-
-  void run() {
-    mullvad.status().then((value) {
-      print("Connected:  ${value.connected}");
-      print("IP:         ${value.ip}");
-      print("City:       ${value.city}");
-      print("Country:    ${value.country}");
     });
   }
 }
